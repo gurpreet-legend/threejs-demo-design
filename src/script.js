@@ -163,9 +163,13 @@ function onDocumentMouseMove(event) {
 // Scroll down event listner
 
 window.addEventListener('scroll', updateSphere);
-
+const initialSize = {
+    x: 0.6,
+    y: 64,
+    z: 64
+}
 function updateSphere(event) {
-    sphere.position.y = window.scrollY * .001
+    sphere.position.z = window.scrollY * .0005
 }
 
 const clock = new THREE.Clock()
@@ -183,7 +187,7 @@ const tick = () => {
     //Update rotation with mouse movements
     sphere.rotation.y += .5 * (targetX - sphere.rotation.y)
     sphere.rotation.x += .5 * (targetY - sphere.rotation.x)
-    sphere.position.z += (targetY - sphere.rotation.x)
+    sphere.position.z += .5 * (targetY - sphere.rotation.x)
 
     // Update Orbital Controls
     // controls.update()
