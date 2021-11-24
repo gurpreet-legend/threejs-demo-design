@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --config ./bundler/webpack.prod.js",
+    "dev": "webpack serve --config ./bundler/webpack.dev.js"
   },
   "dependencies": {
     "@babel/core": "^7.13.1",
