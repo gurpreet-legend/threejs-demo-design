@@ -10,7 +10,7 @@ Just a simple landing page to learn ThreeJS basics :)
 * Clone your forked repository on you local device using command `git clone <forked_repo_github_url>`
 * Run the following commands inside the root folder
   * `npm i`
-  * `npm ruun dev`
+  * `npm run dev`
 <hr />
 
 ⭐ Don't forget to star this repo 😉\
