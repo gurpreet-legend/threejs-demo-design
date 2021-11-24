@@ -18,7 +18,7 @@ const canvas = document.querySelector('canvas.webgl')
 const scene = new THREE.Scene()
 
 // Objects
-const geometry = new THREE.SphereBufferGeometry(.5, 64, 64);
+const geometry = new THREE.SphereBufferGeometry(.6, 64, 64);
 
 // Materials
 
@@ -143,7 +143,7 @@ window.addEventListener('resize', () => {
 /**
  * Animate
  */
-
+//Mouse change event listner
 document.addEventListener('mousemove', onDocumentMouseMove)
 
 let mouseX = 0;
@@ -158,6 +158,14 @@ const windowHalfY = window.innerHeight / 2
 function onDocumentMouseMove(event) {
     mouseX = (event.clientX - windowHalfX)
     mouseY = (event.clientY - windowHalfY)
+}
+
+// Scroll down event listner
+
+window.addEventListener('scroll', updateSphere);
+
+function updateSphere(event) {
+    sphere.position.y = window.scrollY * .001
 }
 
 const clock = new THREE.Clock()
@@ -175,7 +183,7 @@ const tick = () => {
     //Update rotation with mouse movements
     sphere.rotation.y += .5 * (targetX - sphere.rotation.y)
     sphere.rotation.x += .5 * (targetY - sphere.rotation.x)
-    sphere.rotation.z += .5 * (targetY - sphere.rotation.x)
+    sphere.position.z += (targetY - sphere.rotation.x)
 
     // Update Orbital Controls
     // controls.update()
