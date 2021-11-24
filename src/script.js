@@ -144,14 +144,38 @@ window.addEventListener('resize', () => {
  * Animate
  */
 
+document.addEventListener('mousemove', onDocumentMouseMove)
+
+let mouseX = 0;
+let mouseY = 0;
+
+let targetX = 0;
+let targetY = 0;
+
+const windowHalfX = window.innerWidth / 2
+const windowHalfY = window.innerHeight / 2
+
+function onDocumentMouseMove(event) {
+    mouseX = (event.clientX - windowHalfX)
+    mouseY = (event.clientY - windowHalfY)
+}
+
 const clock = new THREE.Clock()
 
 const tick = () => {
+
+    targetX = mouseX * 0.001
+    targetY = mouseY * 0.001
 
     const elapsedTime = clock.getElapsedTime()
 
     // Update objects
     sphere.rotation.y = .5 * elapsedTime
+
+    //Update rotation with mouse movements
+    sphere.rotation.y += .5 * (targetX - sphere.rotation.y)
+    sphere.rotation.x += .5 * (targetY - sphere.rotation.x)
+    sphere.rotation.z += .5 * (targetY - sphere.rotation.x)
 
     // Update Orbital Controls
     // controls.update()
